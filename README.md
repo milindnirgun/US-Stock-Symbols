@@ -1,10 +1,12 @@
 # US-Stock-Symbols
 
-An aggregation of current US Stock Symbols in `json` and `txt` formats.  
+An aggregation of current US Stock Symbols in `json` format.  This repo is modified from the original with the following differences:
+- only store the "*_full_tickers.json" files and not create any of the other .txt redundant files.
+- create a new file everyday with the date appended to the name
+- TODO - write an action to purge older files and save storage
 
-Updated nightly at midnight, Eastern.
+Updated at 6 pm PDT.
 ## Exchanges Available:
-
 - NASDAQ
 - NYSE
 - AMEX
@@ -12,18 +14,21 @@ Updated nightly at midnight, Eastern.
 
 ## How to use the data
 
-Each exchange has three file types: 
+Each exchange has a file named as 
 
-`exchange_full_ticker.json` 
+`exchange_full_ticker-<date>.json` 
 
-This is the raw data from NASDAQ list.  It is not a simple list of ticker symbols and contains full company name, etc.
+This is the raw data from NASDAQ list.  It contains the following data fields:
+- Symbol
+- Company/Name
+- Last closing price for the day
+- Net Change in price from previous close
+- Percentage change in price from previous close
+- Volume
+- Market Capitalization
+- Country
+- IPO Year
+- Industry
+- Sector
+- URL
 
-`exchange_tickers.json` 
-
-This is a `json` list of the ticker symbols on that exchange. Nothing more. 
-
-`exchange_tickers.txt` 
-
-This is a newline separated `txt` list of the ticker symbols on the exchange. Nothing more. 
-## All Symbols
-These may overlap across exchanges, be careful when using them. I highly recommend just consuming the per exchange list for your needs.
